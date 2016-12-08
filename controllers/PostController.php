@@ -7,19 +7,17 @@
  */
 
 namespace app\controllers;
-
+use app\models\Post;
 /**
  * Description of PostController
  *
  * @author d.shinkarev
  */
 class PostController  extends AppController{
-    public function actionIndex($name='Gest') {
-        $hi = 'Привет, Уася';
-        $hi2 = 'Привет, Уася';
-        $hi3 = 'Жопа';
-   # return $this->render('index', ['hi'=> $hi,'hi2'=>$hi2]);
-    return $this->render('index', compact('hi','hi2','hi3','name'));
+    
+    public function actionIndex() {
+           $posts = Post::find()->all();
+       return $this->render('index', compact('posts'));
        
     }
 
@@ -27,6 +25,8 @@ class PostController  extends AppController{
          return $this->render('test');
     }
     public function actionHello() {
-         return $this->render('hello');
+        $hi2 = 'Привет, Уася1111111111111111111111111';
+        $posts = Post::find()->all();
+         return $this->render('hello', compact('posts','hi2'));
     }
 }
