@@ -1,7 +1,7 @@
 
 
 <?php 
-#echo __FILE__;?>
+#echo __FILE__;vgfhgvhgv?>
 <br>
 <?php
 var_dump($hi);
