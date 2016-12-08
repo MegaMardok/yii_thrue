@@ -16,7 +16,7 @@ use app\models\Post;
 class PostController  extends AppController{
     
     public function actionIndex() {
-           $posts = Post::find()->all();
+           $posts = Post::find()->select('id, title, excerpt')->all();
        return $this->render('index', compact('posts'));
        
     }
@@ -27,6 +27,6 @@ class PostController  extends AppController{
     public function actionHello() {
         $hi2 = 'Привет, Уася1111111111111111111111111';
         $posts = Post::find()->all();
-         return $this->render('hello', compact('posts','hi2'));
+         return $this->render('hello');
     }
 }
