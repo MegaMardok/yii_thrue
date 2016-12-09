@@ -16,8 +16,13 @@ use app\models\Post;
 class PostController  extends AppController{
     
     public function actionIndex() {
-           $posts = Post::find()->select('id, title, excerpt')->all();
-       return $this->render('index', compact('posts'));
+           # $posts = Post::find()->select('id, title, excerpt')->all();
+               $query = Post::find()->select('id, title, excerpt');
+               $pages = new \yii\data\Pagination(['totalCount'=> $query->count(), 'pageSize'=> 3, 'pageSizeParam' => FALSE, 'forcePageParam'=> false]);
+               $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
+       #    $this->debug($posts);
+           #debug($posts);
+       return $this->render('index', compact('posts','pages'));
        
     }
 
